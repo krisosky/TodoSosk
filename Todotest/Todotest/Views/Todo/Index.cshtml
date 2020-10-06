@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Todotest.Models.Todo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Todos</h2>
+@*view to displayall todos*@
+<p>
+    @Html.ActionLink("Create New","AddorEdit","Todo")
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "AddorEdit", new { id=item.TodoId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TodoId })
+        </td>
+    </tr>
+}
+
+</table>
